@@ -1,19 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Auth.Data.Enteties
 {
-    class Family
+    public class Family
     {
         /// <summary>
         /// gets or sets the Family id.
         /// </summary>
-        Guid Id { get; set; }
+        [Key]
+        public Guid Id { get; set; }
 
         /// <summary>
         /// gets or sets the name of the Family.
         /// </summary>
-        string Name { get; set; }
+        public string Name { get; set; }
+
+        /// <summary>
+        /// gets or sets the list of the Plants of the famify.
+        /// </summary>
+        public ICollection<Plant> Plants { get; set; } = new List<Plant>();
+
     }
 }

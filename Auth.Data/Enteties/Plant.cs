@@ -1,35 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Auth.Data.Enteties
 {
-    class Plant
+    public class Plant
     {
         /// <summary>
         /// gets or sets the plant id.
         /// </summary>
-        Guid Id { get; set; }
+         [Key]
+        public Guid Id { get; set; }
 
         /// <summary>
         /// gets or sets the name of the plant.
         /// </summary>
-        string Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// gets or sets the available of the plant.
         /// </summary>
-        bool Available { get; set; }
+        public bool Available { get; set; }
 
         /// <summary>
         /// gets or sets the price of the plant.
         /// </summary>
-        double Price { get; set; }
+        public double Price { get; set; }
 
         /// <summary>
         /// gets or sets the family of the plant.
         /// </summary>
-        Family Family { get; set; }
+        public Family Family { get; set; }
 
 
     }

@@ -3,10 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Auth.Data.DbContexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace Auth.Web
 {
@@ -23,6 +21,10 @@ namespace Auth.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<AuthDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                assembly => assembly.MigrationsAssembly(typeof(AuthDbContext).Assembly.FullName))); 
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
