@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Auth.Data.DbContexts;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 
 namespace Auth.Web
 {
@@ -21,6 +22,7 @@ namespace Auth.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<AuthDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                 assembly => assembly.MigrationsAssembly(typeof(AuthDbContext).Assembly.FullName))); 
