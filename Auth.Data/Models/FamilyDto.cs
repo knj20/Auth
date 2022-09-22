@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Auth.Data.Models
 {
-    internal class FamilyDto
+    public class FamilyDto
     {
         public Guid Id { get; set; }
 

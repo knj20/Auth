@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Auth.Data.Models.PlantDto>
+<div class="row">
+    <div class="col-md-10 col-md-offset-2">
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Avaivalbe</th>
+                <th>price</th>
+                <th>Family name</th>
+                <th>Actions</th>
+            </tr>
+            @foreach (var plant in Model)
+            {
+                <tr>
+                    <td>@plant.Name</td>
+                    <td>@plant.Available</td>
+                    <td>@plant.Price</td>
+                    <td>@plant.Family?.Name</td>
+                    <td>
+                        <a asp-controller="Proposal" asp-action="Index" asp-route-conferenceId="@plant.Id">more info</a>
+                    </td>
+                </tr>
+            }
+        </table>
+        <a asp-action="Add">Add</a>
+
+    </div>
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <table class="table table-sm">
+        @foreach (var claim in User.Claims)
+        {
+            <tr>
+                <td>@claim.Type</td>
+                <td>@claim.Value</td>
+            </tr>
+        }
+    </table>
+}
+

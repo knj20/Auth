@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Auth.Data.Models
 {
-    internal class UserDto
+    public class UserDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

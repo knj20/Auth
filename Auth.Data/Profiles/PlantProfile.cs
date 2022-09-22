@@ -4,11 +4,11 @@ using AutoMapper;
 
 namespace Auth.Data.Profiles
 {
-    internal class PlantProfile : Profile
+    public class PlantProfile : Profile
     {
         public PlantProfile()
         {
-            CreateMap<Plant, PlantDto>();
+            CreateMap<Plant, PlantDto>().ReverseMap();
         }
         
     }

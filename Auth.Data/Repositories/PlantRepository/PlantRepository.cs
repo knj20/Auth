@@ -4,11 +4,12 @@ using Auth.Data.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Auth.Data.Repositories.PlantRepository
 {
-    internal class PlantRepository : IPlantRepository
+    public class PlantRepository : IPlantRepository
     {
         private readonly AuthDbContext _dbContext;
         private readonly IMapper _mapper;
@@ -19,9 +20,14 @@ namespace Auth.Data.Repositories.PlantRepository
             _mapper = mapper;
 
         }
+        public async Task<List<PlantDto>> GetAll()
+        {
+            var plants = await _dbContext.Plants.Include(c => c.Family).ToListAsync();
+            return _mapper.Map<List<Plant>, List<PlantDto>>(plants);
+        }
         public Task<int> Add(PlantDto plant)
         {
-            var plantEntity = _mapper.Map<Plant>(plant);
+            var plantEntity = _mapper.Map<PlantDto, Plant>(plant);
             _dbContext.Plants.Add(plantEntity);
             return _dbContext.SaveChangesAsync();
         }

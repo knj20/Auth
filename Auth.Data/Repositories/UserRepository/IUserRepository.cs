@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Auth.Data.Repositories.UserRepository
 {
-    internal interface IUserRepository
+    public interface IUserRepository
     {
         public UserDto GetUserByUserNameAndPassword(string userName, string password);
     }
